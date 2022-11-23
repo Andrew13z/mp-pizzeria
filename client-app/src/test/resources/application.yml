@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    defer-datasource-initialization: true
+  kafka:
+    producer:
+      acks: 1
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: client-app
+      auto-offset-reset: earliest
+
+client-app:
+  producer:
+    topic-name: order_topic
+  consumer:
+    topic-name: notification_topic

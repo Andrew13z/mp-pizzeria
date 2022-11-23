@@ -1,0 +1,19 @@
+server:
+  port: 8082
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      acks: 1
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: courier-app
+      auto-offset-reset: earliest
+
+courier-app:
+  producer:
+    topic-name: notification_topic
+  consumer:
+    topic-name: notification_topic
